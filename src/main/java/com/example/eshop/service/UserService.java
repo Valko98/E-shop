@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,8 +30,6 @@ public class UserService implements UserDao {
         return userRepository.findByEmail(email);
     }
 
-
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
        User user = userRepository.findByEmail( email);
@@ -45,7 +42,7 @@ public class UserService implements UserDao {
                 mapRolesToAuthorities(user.getRoles()));
     }
 
-    public User userRegistration(UserDto userDto) {
+    public User save(UserDto userDto) {
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
