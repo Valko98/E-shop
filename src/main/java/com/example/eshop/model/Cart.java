@@ -1,17 +1,20 @@
 package com.example.eshop.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "cart")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +30,8 @@ public class Cart implements Serializable {
 
     @Column(nullable = false)
     private Boolean closed = false;
+
+    private LocalDateTime dateTime;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "cart_has_product", joinColumns = @JoinColumn(name = "id_cart"),

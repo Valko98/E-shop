@@ -46,4 +46,7 @@ public class User {
         this.roles = roles;
     }
 
+    public String getName() {
+        return this.firstName + " " + this.lastName;
+    }
 }
